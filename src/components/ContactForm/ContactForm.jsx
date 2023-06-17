@@ -1,6 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact} from 'redux/operation';
-import { selectContactsItems } from 'redux/selectors';
+import {
+  useAddContactMutation,
+  useFetchContactsQuery,
+} from 'services/api';
 import {toast} from 'react-toastify';
 import {useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -34,8 +35,10 @@ const schema = yup.object().shape({
 })
 
 export const ContactForm = () => {
-  const dispatch = useDispatch();
-  const contactsItems = useSelector(selectContactsItems);
+
+  const { data: contacts } = useFetchContactsQuery();
+  const [addContact] = useAddContactMutation();
+
   const {
       register, 
       handleSubmit,
@@ -51,20 +54,23 @@ export const ContactForm = () => {
     })
   
 
-   const addNewContact = data => {
+   const addNewContact = async data => {
     const normalizeName = data.name.toLowerCase();
     const normalizedphone = data.phone;
 
-    if(contactsItems.find(item => item.name.toLowerCase() === normalizeName)) {
+    if(contacts.find(item => item.name.toLowerCase() === normalizeName)) {
       return toast.info(`${data.name} has alredy in your contacts`);
     };
-    if(contactsItems.find(item => item.phone === normalizedphone)) {
+    if(contacts.find(item => item.phone === normalizedphone)) {
       return toast.info(`${data.phone} has alredy in your contacts`);
     };
-    dispatch(addContact(data));
-    console.log(data)
-    toast.info('New contact has been added to your phonebook')
-    reset();
+    try{
+      await addContact(data);
+      toast.info('New contact has been added to your phonebook')
+      reset();
+    }catch(error) {
+      toast.error('Something is wrong. New contact was not added')
+    }
    };
 
     return (

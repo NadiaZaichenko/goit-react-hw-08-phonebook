@@ -1,20 +1,49 @@
-// import axios from "axios";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// axios.defaults.baseURL = "https://64846e99ee799e321626abed.mockapi.io";
+export const contactsApi = createApi({
+  reducerPath: 'phoneBookApi',
 
-// export const fetchContacts = async() => {
-//     const response = await axios.get(`/contacts`);
-//     console.log(response.data)
-//     return response.data;
-// };
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://connections-api.herokuapp.com',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
 
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
 
-// export const addContact = async({ name, phone }) => {
-//     const response = await axios.post("/contacts", { name, phone });
-//     return response.data;
-// };
+  tegTypes: ['Contact'],
 
-// export const deleteContact = async id =>{
-//     const response = await axios.delete(`/contacts/${id}`);
-//     return response.data;
-// };
+  endpoints: builder => ({
+    fetchContacts: builder.query({
+      query: () => `/contacts`,
+      providesTags: ['Contacts'],
+    }),
+
+    addContact: builder.mutation({
+      query: newContact => ({
+        url: '/contacts',
+        method: 'POST',
+        body: newContact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+
+    deleteContact: builder.mutation({
+      query: contactId => ({
+        url: `/contacts/${contactId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+  }),
+});
+
+export const {
+  useFetchContactsQuery,
+  useAddContactMutation,
+  useDeleteContactMutation,
+} = contactsApi;

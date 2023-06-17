@@ -14,12 +14,8 @@ export const StyledLabel = styled.label`
   gap: 18px;
   div {
     padding: 8px;
-    border: ${({ theme }) => {
-      return theme.buttonBorder;
-    }};
-    border-radius: ${({ theme }) => {
-      return theme.inputBorderRadius;
-    }};
+    border: 2px solid red;
+    border-radius: 8px;
     background-color: #ffc4c4;
     width: 288px;
     font-size: 14px;
@@ -33,12 +29,8 @@ export const StyledInput = styled.input`
   width: 300px;
   height: 40px;
   font-size: 16px;
-  border-radius: ${({ theme }) => {
-    return theme.inputBorderRadius;
-  }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
-  }};
+  border-radius: 8ps;
+  border: 2px solid red;
   &::placeholder {
     font-size: 16px;
   }
@@ -48,15 +40,9 @@ export const StyledButton = styled.button`
   width: 150px;
   height: 40px;
   transform: scale(1);
-  background-color: ${({ theme }) => {
-    return theme.colors.buttonBackgroundColor;
-  }};
-  border-radius: ${({ theme }) => {
-    return theme.buttonBorderRadius;
-  }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
-  }};
+  background-color: #defff5;
+  border-radius:8px;
+  border: 2px solid red;
   font-size: 16px;
   transition: transform 250ms ease-out, background-color 250ms ease-out;
   &:hover,

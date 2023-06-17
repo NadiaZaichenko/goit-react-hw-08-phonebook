@@ -1,25 +1,37 @@
-import { useSelector} from 'react-redux';
-// import { selectContactsItems } from 'reducer/selectors';
-import { selectFilteredContacts } from 'redux/selectors';
+import { useMemo } from 'react';
+import { useFilterValue } from 'hooks';
+import { useFetchContactsQuery } from 'services/api';
 import { List } from './ContactList.styled'
 import { ContactItem } from 'components/ContactItem/ContactItem'
 
 export function ContactList() {
-  // const contacts = useSelector(selectContactsItems);
-  // const filterValue = useSelector(selectFilterValue);
+ 
+  const filterValue = useFilterValue();
 
-  // const getFilteredContacts = () => {
-  //   const normalizedFilter = filterValue.toLowerCase().trim();
-  //     return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
+const {data: contacts} = useFetchContactsQuery();
 
-  const filteredContacts = useSelector(selectFilteredContacts);
+const getFilteredContacts = useMemo(
+  () => () => {
+    if (!contacts) {
+      return;
+    }
 
+    const normalizedFilter = filterValue.toLowerCase().trim();
+
+    return contacts.filter(
+      contact =>
+        contact.name.toLowerCase().includes(normalizedFilter) ||
+        contact.number.includes(normalizedFilter)
+    );
+  },
+  [contacts, filterValue]
+);
+const filteredContacts = getFilteredContacts();
   return (
     <List>
-      {filteredContacts.map(({ id, name, phone }) => {
+      {filteredContacts 
+      && 
+      filteredContacts.map(({ id, name, phone }) => {
         return <ContactItem key={id} id={id} name={name} phone={phone} />;
       })}
     </List>

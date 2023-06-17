@@ -1,20 +1,25 @@
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operation';
+import { toast } from 'react-toastify';
+import { useDeleteContactMutation } from 'services/api';
 import { ListItem, StyledButton } from './ContactItem.styled'
 
 export const ContactItem = ({id, name, phone}) => {
-    const dispatch = useDispatch();
+    const [deleteContact] = useDeleteContactMutation();
 
-    const contactDeleteOf = (id) => {
-        dispatch(deleteContact(id))
+    const contactDeleteOf = async (contactId, contactName) => {
+     try {
+        await deleteContact(contactId);
+        toast.info(`${contactName} nas beeb deleted `);
+     } catch (error) {
+        toast.error(`Something was wrong, ${contactName} was not deleted`)
+     }
 
     }
 return (
     <ListItem>
         <p>{name} : {phone}</p>
         <StyledButton type="button" 
-        onClick={() => contactDeleteOf(id)}>
+        onClick={() => contactDeleteOf(id, name)}>
             Delete
         </StyledButton>
     </ListItem>
