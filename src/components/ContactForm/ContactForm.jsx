@@ -41,7 +41,7 @@ export const ContactForm = () => {
   const {
       register, 
       handleSubmit,
-      formState: { errors },
+      formState: { errors},
       reset,
     } = useForm({
       defaultValues: {
