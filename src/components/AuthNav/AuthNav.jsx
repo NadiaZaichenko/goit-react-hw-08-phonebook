@@ -2,7 +2,6 @@ import { SignInLink, RegisterLinkWrapper, RegisterLinkMessage, RegisterLink } fr
 
 export const AuthNav = () => {
     return (
-        <div>
           <ul>
       <SignInLink to="/login">Log in</SignInLink>
       <RegisterLinkWrapper>
@@ -10,6 +9,5 @@ export const AuthNav = () => {
       <RegisterLink to="/register">Start here</RegisterLink>
       </RegisterLinkWrapper>
     </ul>
-        </div>
     )
 }

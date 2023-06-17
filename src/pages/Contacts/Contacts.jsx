@@ -3,6 +3,8 @@ import { ContactList } from "components/ContactList/ContactList";
 import { Filter } from "components/Filter/Filter";
 import { useFetchContactsQuery } from "services/contactsApi";
 import { Message } from "components/Message/Message";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import {
     Container,
     SectionsContainer,
@@ -20,12 +22,11 @@ import {
         if(!contacts) {
             return 0;
         }
-        return contacts.lenght;
+        return contacts.length;
 
     }
 
     return (
-  
         <Container>
       <SectionsContainer>
         <Section>
@@ -33,7 +34,7 @@ import {
           <ContactForm />
         </Section>
         <Section>
-          <SectionTitle>Contacts</SectionTitle>{' '}
+          <SectionTitle>Contacts</SectionTitle>
           {totalContacts !== 0 ? (
             <>
               <Filter />
@@ -44,7 +45,7 @@ import {
           )}
         </Section>
       </SectionsContainer>
-      {/* <ToastWrapper /> */}
+      <ToastContainer/>
     </Container>
     );
 }

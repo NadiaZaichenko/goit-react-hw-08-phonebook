@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ children, redirectTo = '/' }) => {
   const isLoggedIn = useLoggedIn();
-  // const shouldRedirect = !isLoggedIn && !isRefreshing;
   return isLoggedIn ? children : <Navigate to={redirectTo} replace={true} />;
 }
 
