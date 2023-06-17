@@ -1,7 +1,7 @@
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { ContactList } from "components/ContactList/ContactList";
 import { Filter } from "components/Filter/Filter";
-import { useFetchContactsQuery } from "services/api";
+import { useFetchContactsQuery } from "services/contactsApi";
 import { Message } from "components/Message/Message";
 import {
     Container,

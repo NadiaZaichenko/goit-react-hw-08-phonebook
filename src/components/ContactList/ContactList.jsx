@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useFilterValue } from 'hooks';
-import { useFetchContactsQuery } from 'services/api';
+import { useFetchContactsQuery } from 'services/contactsApi';
 import { List } from './ContactList.styled'
 import { ContactItem } from 'components/ContactItem/ContactItem'
 

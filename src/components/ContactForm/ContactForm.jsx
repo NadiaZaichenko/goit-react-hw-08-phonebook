@@ -1,7 +1,7 @@
 import {
   useAddContactMutation,
   useFetchContactsQuery,
-} from 'services/api';
+} from 'services/contactsApi';
 import {toast} from 'react-toastify';
 import {useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -35,14 +35,13 @@ const schema = yup.object().shape({
 })
 
 export const ContactForm = () => {
-
   const { data: contacts } = useFetchContactsQuery();
   const [addContact] = useAddContactMutation();
 
   const {
       register, 
       handleSubmit,
-      formState: {errors},
+      formState: { errors },
       reset,
     } = useForm({
       defaultValues: {
