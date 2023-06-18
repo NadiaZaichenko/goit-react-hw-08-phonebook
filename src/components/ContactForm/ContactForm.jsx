@@ -15,7 +15,7 @@ import {
 
 const nameRegex = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
-const phoneRegex = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
+const numberRegex = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
 
 const schema = yup.object().shape({
     name: yup
@@ -25,11 +25,11 @@ const schema = yup.object().shape({
         message: "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     })
     .required('Name is required'),
-    phone: yup
+    number: yup
     .string()
     .min(3)
-    .matches(phoneRegex, {
-        message: "Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+    .matches(numberRegex, {
+        message: "number number must be digits and can contain spaces, dashes, parentheses and can start with +"
     })
     .required('Number is reqired')
 })
@@ -46,7 +46,7 @@ export const ContactForm = () => {
     } = useForm({
       defaultValues: {
         name: '',
-        phone: '',
+        number: '',
       },
       resolver: yupResolver(schema),
       mode: 'onTouched',
@@ -55,17 +55,17 @@ export const ContactForm = () => {
 
    const addNewContact = async data => {
     const normalizeName = data.name.toLowerCase();
-    const normalizedphone = data.phone;
+    const normalizednumber = data.number;
 
     if(contacts.find(item => item.name.toLowerCase() === normalizeName)) {
       return toast.info(`${data.name} has alredy in your contacts`);
     };
-    if(contacts.find(item => item.phone === normalizedphone)) {
-      return toast.info(`${data.phone} has alredy in your contacts`);
+    if(contacts.find(item => item.number === normalizednumber)) {
+      return toast.info(`${data.number} has alredy in your contacts`);
     };
     try{
       await addContact(data);
-      toast.info('New contact has been added to your phonebook')
+      toast.info('New contact has been added to your numberbook')
       reset();
     }catch(error) {
       toast.error('Something is wrong. New contact was not added')
@@ -85,14 +85,14 @@ export const ContactForm = () => {
           {errors.name && <div>{errors.name?.message}</div>}
         </StyledLabel>
         <StyledLabel>
-          Phone
+          Number
           <StyledInput
             type="tel"
-            placeholder="Enter a contact phone"
+            placeholder="Enter a contact number"
             autoComplete="off"
-            {...register('phone')}
+            {...register('number')}
           />
-          {errors.phone && <div>{errors.phone?.message}</div>}
+          {errors.number && <div>{errors.number?.message}</div>}
         </StyledLabel>
         <StyledButton type="submit">Add contact</StyledButton>
       </StyledForm>

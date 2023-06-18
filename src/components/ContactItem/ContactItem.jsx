@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useDeleteContactMutation } from 'services/contactsApi';
 import { ListItem, StyledButton } from './ContactItem.styled'
 
-export const ContactItem = ({id, name, phone}) => {
+export const ContactItem = ({id, name, number}) => {
     const [deleteContact] = useDeleteContactMutation();
 
     const contactDeleteOf = async (contactId, contactName) => {
@@ -17,7 +17,7 @@ export const ContactItem = ({id, name, phone}) => {
     }
 return (
     <ListItem>
-        <p>{name} : {phone}</p>
+        <p>{name} : {number}</p>
         <StyledButton type="button" 
         onClick={() => contactDeleteOf(id, name)}>
             Delete
@@ -29,6 +29,6 @@ return (
 ContactItem.propTypes ={
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
 
 }
