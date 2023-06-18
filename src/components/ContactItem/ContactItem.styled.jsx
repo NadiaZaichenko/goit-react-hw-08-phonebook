@@ -9,27 +9,17 @@ export const ListItem = styled.li`
   padding: 5px;
   font-size: 16px;
   background-color: white;
-  border-radius: ${({ theme }) => {
-    return theme.inputBorderRadius;
-  }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
-  }};
+  border-radius: 8px;
+  border:2px solid red;
 `;
 
 export const StyledButton = styled.button`
   width: 70px;
   height: 40px;
   transform: scale(1);
-  background-color: ${({ theme }) => {
-    return theme.colors.buttonBackgroundColor;
-  }};
-  border-radius: ${({ theme }) => {
-    return theme.buttonBorderRadius;
-  }};
-  border: ${({ theme }) => {
-    return theme.buttonBorder;
-  }};
+  background-color: #defff5;
+  border-radius: 8px;
+  border: 2px solid red;
   font-size: 16px;
   transition: transform 250ms ease-out, background-color 250ms ease-out;
   &:hover,
