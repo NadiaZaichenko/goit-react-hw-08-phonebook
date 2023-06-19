@@ -1,14 +1,14 @@
 export const light = {
   name: 'light-mode',
   colors: {
-    mainColor: '#01465d',
-    accentColor: '#ac48cd',
-    mainBackgroundColor: '#defff5',
-    secondaryBackgroundColor: '#baf8e4',
+    mainColor: '#150c3c',
+    accentColor: '#371358',
+    mainBackgroundColor: '#d1a9fff7',
+    secondaryBackgroundColor: '#9778ff',
   },
   fontStyles: {
     size: '18px',
-    weight: '700',
+    weight: '600',
   },
   breakPoints: {
     mobile: '@media screen and (min-width: 320px)',
@@ -23,10 +23,10 @@ export const light = {
 export const dark = {
   name: 'dark-mode',
   colors: {
-    mainColor: '#d7fff1',
-    accentColor: '#e8d1ff',
-    mainBackgroundColor: '#297f91',
-    secondaryBackgroundColor: '#073f51',
+    mainColor: '#9bd4dd',
+    accentColor: '#03d196',
+    mainBackgroundColor: '#03315e',
+    secondaryBackgroundColor: '#010d1a',
   },
   fontStyles: {
     size: '18px',

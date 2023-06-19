@@ -22,7 +22,7 @@ const styledLabelDynamicStyle = ({ theme }) => css`
     padding: 12px;
     border: 2px solid ${theme.colors.mainColor};
     border-radius: ${theme.borderRadius};
-    background-color: ${theme.colors.accentBackgroundColor};
+    background-color: ${theme.colors.accentColor};
     color: ${theme.colors.secondaryBackgroundColor};
     width: 100%;
     font-size: 16px;
@@ -59,7 +59,7 @@ const styledButtonDynamicStyle = ({ theme }) => css`
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-    ${theme.colors.accentColor};
+    color: ${theme.colors.accentColor};
     border: 2px solid ${theme.colors.accentColor};
     transform: scale(1.1);
   }

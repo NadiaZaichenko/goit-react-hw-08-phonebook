@@ -4,6 +4,12 @@ import { useDispatch } from 'react-redux';
 import {registration } from "redux/auth/authOperations";
 import * as yup from 'yup';
 import { toast } from "react-toastify";
+import {
+  StyledLabel,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+} from './RegisterForm.styled';
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -48,33 +54,33 @@ export const RegisterForm = () => {
     
 
     return(
-        <form onSubmit={handleSubmit(registerUser)} >
-          <label>Name
-                <input type="text"
+        <StyledForm onSubmit={handleSubmit(registerUser)} >
+          <StyledLabel>Name
+                <StyledInput type="text"
           placeholder="Enter your name"
           autoComplete="off"
           {...register('name')}
         />
         {errors.name && <div>{errors.name?.message}</div>}
-            </label>
-            <label>Email
-                <input type="email"
+            </StyledLabel>
+            <StyledLabel>Email
+                <StyledInput type="email"
           placeholder="Enter your email"
           autoComplete="off"
           {...register('email')}
         />
         {errors.email && <div>{errors.email?.message}</div>}
-            </label>
-            <label>Password
-                <input  type="password"
+            </StyledLabel>
+            <StyledLabel>Password
+                <StyledInput  type="password"
           placeholder="Enter your password"
           autoComplete="off"
           {...register('password')}
         />
         {errors.password && <div>{errors.password?.message}</div>}
-            </label>
-            <button type="submit">Register</button>
-        </form>
+            </StyledLabel>
+            <StyledButton type="submit">Register</StyledButton>
+        </StyledForm>
        
     )
 }

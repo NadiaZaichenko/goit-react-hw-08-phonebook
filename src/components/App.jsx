@@ -13,6 +13,7 @@ const HomePage = lazy(() => import('../pages/Home/HomePage'));
 const RegisterationPage = lazy(() => import('../pages/Register/Register'));
 const LoginPage = lazy(() => import('../pages/Login/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts/Contacts'));
+const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'))
 
 
 
@@ -54,6 +55,7 @@ useEffect(() => {
             </PrivateRoute>
           }
         />
+        <Route path='*' element={<PageNotFound />}/>
       </Route>
     </Routes>
   <ToastContainer autoClose={3000}/>

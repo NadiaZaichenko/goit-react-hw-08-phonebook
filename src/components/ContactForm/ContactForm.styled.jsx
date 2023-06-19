@@ -5,8 +5,8 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  width: 65%;
+  gap: 45px;
+  width: 60%;
 `;
 
 const labelDynamicStyle = ({theme}) => css`
@@ -38,7 +38,7 @@ const inputDynamicStyle = ({theme}) => css`
   color: ${theme.colors.mainColor};
   &::placeholder {
     color: ${theme.colors.mainColor};
-    font-size: 16px;
+    font-size: 20px;
   }
 `
 

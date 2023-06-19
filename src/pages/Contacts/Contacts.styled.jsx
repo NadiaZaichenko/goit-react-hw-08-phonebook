@@ -4,23 +4,23 @@ import { css } from '@emotion/react';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 30px;
 `;
 
 export const SectionsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
+  gap: 50px;
+  justify-content: space-between;
   flex-grow: 1;
 `;
 
 const sectionDynamicStyle = ({ theme }) => css`
   display: flex;
+  margin-top: 40px;
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  max-width: 500px;
+  width: 510px;
   min-height: 570px;
   padding: 20px;
   background-color: ${theme.colors.secondaryBackgroundColor};

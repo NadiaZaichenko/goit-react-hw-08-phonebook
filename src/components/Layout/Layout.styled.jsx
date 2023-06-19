@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { GiNotebook } from 'react-icons/gi';
+import { MdContactPhone } from "react-icons/md";
+// import { GiNotebook } from 'react-icons/gi';
 
 const headerContainerDynamicStyle = ({theme}) => css`
   display: flex;
@@ -96,6 +97,6 @@ export const LogoText = styled.p`
 export const StyledMain = styled.main`
   ${styledMainDynamicStyle}
 `
-export const LogoIcon = styled(GiNotebook)`
+export const LogoIcon = styled(MdContactPhone)`
   ${logoIconDynamicStyle}
 `

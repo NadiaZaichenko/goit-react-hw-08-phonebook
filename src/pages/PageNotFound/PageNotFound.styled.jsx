@@ -19,29 +19,15 @@ const containerDynamicStyle = ({ theme }) => css`
   }
 `;
 
-const welcomeMessageDynamicStyle = ({ theme }) => css`
-  margin: 20px 0;
-  padding-top: 10px;
-  font-size: ${theme.fontStyles.size};
-  font-weight: ${theme.fontStyles.weight};
-  color: ${theme.colors.mainColor};
-  text-transform: uppercase;
-  text-align: center;
+export const Main = styled.main`
+  flex-grow: 1;
 `;
 
 export const Image = styled.img`
-  width: 400px;
-  border-radius: 200px;
+  margin-top: 20px;
+  width: 100%;
 `;
-
 export const Container = styled.div`
   ${containerDynamicStyle}
 `;
 
-export const WelcomeMessage = styled.p`
-  ${welcomeMessageDynamicStyle}
-`;
-
-export const Br = styled.br`
-margin-top: 10px;
-`;
