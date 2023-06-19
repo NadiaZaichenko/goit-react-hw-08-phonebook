@@ -1,10 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import {registration } from "redux/auth/authOperations";
-
 import * as yup from 'yup';
+import { toast } from "react-toastify";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -29,7 +28,6 @@ export const RegisterForm = () => {
         handleSubmit,
         formState: { errors },
         reset,
-        formState,
       } = useForm({
         defaultValues: {
           name: '',
@@ -40,15 +38,12 @@ export const RegisterForm = () => {
         mode: 'onTouched',
       });
     
-      useEffect(() => {
-        if (formState.isSubmitSuccessful) {
+      const registerUser = data => {
+        if(data === Response.ok){
+          dispatch(registration(data));
           reset();
         }
-      }, [formState.isSubmitSuccessful, reset]);
-    
-      const registerUser = data => {
-        dispatch(registration(data));
-        console.log(data);
+        toast.error('Sorry, this name is not valid'); 
       };
     
 
@@ -80,5 +75,6 @@ export const RegisterForm = () => {
             </label>
             <button type="submit">Register</button>
         </form>
+       
     )
 }

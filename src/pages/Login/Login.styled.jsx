@@ -16,21 +16,27 @@ const formTitleDynamicStyle = ({ theme }) => css`
 
 const newUserTextDynamicStyle = ({ theme }) => css`
   margin-top: 20px;
+  color: ${theme.colors.mainColor};
+  font-size: ${theme.fontStyles.size};
 `;
 
-const registerLinkDynamicStyle = () => css`
+const registerLinkDynamicStyle = ({ theme }) => css`
   display: block;
   width: 280px;
   padding: 12px;
   transform: scale(1);
-  
+  color: ${theme.colors.mainColor};
+  font-size: ${theme.fontStyles.size};
+  font-weight: ${theme.fontStyles.weight};
   text-align: center;
- 
+  border: 2px solid ${theme.colors.mainColor};
+  border-radius: ${theme.borderRadius};
   transition: transform 250ms ease-out, color 250ms ease-out,
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-   
+    color: ${theme.colors.accentColor};
+    border: 2px solid ${theme.colors.accentColor};
     transform: scale(1.1);
   }
 `;

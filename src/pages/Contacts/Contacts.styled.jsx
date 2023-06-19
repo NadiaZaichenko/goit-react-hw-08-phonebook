@@ -15,7 +15,7 @@ export const SectionsContainer = styled.div`
   flex-grow: 1;
 `;
 
-const sectionDynamicStyle = () => css`
+const sectionDynamicStyle = ({ theme }) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,9 +23,9 @@ const sectionDynamicStyle = () => css`
   max-width: 500px;
   min-height: 570px;
   padding: 20px;
-  background-color: #baf8e4;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  background-color: ${theme.colors.secondaryBackgroundColor};
+  border-radius: ${theme.borderRadius};
+  box-shadow: ${theme.boxShadow};
 `;
 
 export const Title = styled.h1`
@@ -36,11 +36,11 @@ export const Title = styled.h1`
   text-transform: uppercase;
 `;
 
-const sectionTitleDynamicStyle = () => css`
+const sectionTitleDynamicStyle = ({ theme }) => css`
   margin: 0;
   text-align: center;
   font-size: 28px;
-  color: #01465d;
+  color: ${theme.colors.mainColor};
 `;
 
 export const Section = styled.section`

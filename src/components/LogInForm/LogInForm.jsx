@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from "react-redux";
 import { logIn } from "redux/auth/authOperations";
 import * as yup from 'yup';
+import { toast } from "react-toastify";
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -29,7 +29,6 @@ export const LogInForm = () => {
         handleSubmit,
         formState: { errors },
         reset,
-        formState,
       } = useForm({
         defaultValues: {
           email: '',
@@ -39,19 +38,17 @@ export const LogInForm = () => {
         mode: 'onTouched',
       });
     
-      useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-          reset();
-        }
-      }, [formState.isSubmitSuccessful, reset]);
-    
       const loginUser = data => {
+        if(data !== Response.ok){
+           toast.error('Sorry, this name is not valid.Try again'); 
+        }
         dispatch(logIn(data));
+          reset();
       };
 
     return(
         <form onSubmit={handleSubmit(loginUser)} 
-        // autoComplete="off"
+        autoComplete="off"
         >
             <label>Email
              <input  type="email"

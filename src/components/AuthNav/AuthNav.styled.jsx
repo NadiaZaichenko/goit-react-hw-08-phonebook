@@ -2,22 +2,22 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
-const signInLinkDynamicStyle = () => css`
+const signInLinkDynamicStyle = ({theme}) => css`
   display: block;
   padding: 12px;
   transform: scale(1.1);
   text-align: center;
   font-size: 24px;
-  font-weight: 700;
-  color: #01465d;
-  border: 2px solid #01465d;
-  border-radius: 8px;
+  font-weight: ${theme.fontStyles.weight};
+  color: ${theme.colors.mainColor};
+  border: 2px solid ${theme.colors.mainColor};
+  border-radius: ${theme.borderRadius};
   transition: transform 250ms ease-out, color 250ms ease-out,
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
-    color: #ac48cd;
-    border: 2px solid #ac48cd;
+    color: ${theme.colors.accentColor};
+    border: 2px solid ${theme.colors.accentColor};
   }
 `
 export const RegisterLinkWrapper = styled.div`
@@ -28,19 +28,19 @@ export const RegisterLinkWrapper = styled.div`
   margin-top: 8px;
 `;
 
-const registerLinkMessageDynamicStyle = () => css`
+const registerLinkMessageDynamicStyle = ({theme}) => css`
   margin: 0;
-  font-size: 18px;
-  color: #01465d;
+  font-size: ${theme.fontStyles.size};
+  color: ${theme.colors.mainColor};
 `
-const registerLinkDynamicStyle = () => css`
-  font-size: 18px;
-  font-weight: 700;
-  color: #01465d;
+const registerLinkDynamicStyle = ({theme}) => css`
+  font-size: ${theme.fontStyles.size};
+  font-weight: ${theme.fontStyles.weight};
+  color: ${theme.colors.mainColor};
   transition: color 250ms ease-out;
   &:hover,
   &:focus-visible {
-    color: #ac48cd;
+    color: ${theme.colors.accentColor};
   }
 `
 

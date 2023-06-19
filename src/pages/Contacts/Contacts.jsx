@@ -45,7 +45,8 @@ import {
           )}
         </Section>
       </SectionsContainer>
-      <ToastContainer/>
+      <ToastContainer
+      autoClose={3000}/>
     </Container>
     );
 }

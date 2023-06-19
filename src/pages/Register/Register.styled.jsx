@@ -9,26 +9,35 @@ export const FormWrapper = styled.div`
   align-items: center;
 `;
 
-const formTitleDynamicStyle = () => css`
+const formTitleDynamicStyle = ({ theme }) => css`
   margin: 20px 0 0 0;
- 
+  color: ${theme.colors.mainColor};
 `;
 
-const userTextDynamicStyle = () => css`
+const userTextDynamicStyle = ({ theme }) => css`
   margin-top: 20px;
+  color: ${theme.colors.mainColor};
+  font-size: ${theme.fontStyles.size};
 `;
 
-const loginLinkDynamicStyle = () => css`
+const loginLinkDynamicStyle = ({ theme }) => css`
   display: block;
   width: 280px;
   padding: 12px;
   transform: scale(1);
+  color: ${theme.colors.mainColor};
+  font-size: ${theme.fontStyles.size};
+  font-weight: ${theme.fontStyles.weight};
   text-align: center;
+  color: ${theme.colors.mainColor};
+  border: 2px solid ${theme.colors.mainColor};
   border-radius: 8px;
   transition: transform 250ms ease-out, color 250ms ease-out,
     border 250ms ease-out;
   &:hover,
   &:focus-visible {
+    color: ${theme.colors.accentColor};
+    border: 2px solid ${theme.colors.accentColor};
     transform: scale(1.1);
   }
 `;

@@ -6,6 +6,8 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { refreshUser } from 'redux/auth/authOperations';
 import { useRefreshUser } from 'hooks';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = lazy(() => import('../pages/Home/HomePage'));
 const RegisterationPage = lazy(() => import('../pages/Register/Register'));
@@ -22,8 +24,8 @@ const isRefreshing = useRefreshUser();
 useEffect(() => {
   dispatch(refreshUser());
 }, [dispatch]);
-  return (!isRefreshing && (
-      <Routes>
+  return (!isRefreshing && (<>
+   <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={
         <PublicRoute>
@@ -54,6 +56,10 @@ useEffect(() => {
         />
       </Route>
     </Routes>
+  <ToastContainer autoClose={3000}/>
+  </>
+     
+  
   )
 );
 }

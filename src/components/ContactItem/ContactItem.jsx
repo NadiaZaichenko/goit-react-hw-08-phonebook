@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify';
 import { useDeleteContactMutation } from 'services/contactsApi';
-import { ListItem, StyledButton } from './ContactItem.styled'
+import { ListItem, StyledButton, ContactInfo } from './ContactItem.styled';
 
 export const ContactItem = ({id, name, number}) => {
     const [deleteContact] = useDeleteContactMutation();
@@ -17,7 +17,7 @@ export const ContactItem = ({id, name, number}) => {
     }
 return (
     <ListItem>
-        <p>{name} : {number}</p>
+        <ContactInfo>{name} : {number}</ContactInfo>
         <StyledButton type="button" 
         onClick={() => contactDeleteOf(id, name)}>
             Delete
