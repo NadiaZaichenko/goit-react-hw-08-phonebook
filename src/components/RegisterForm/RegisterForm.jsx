@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import {registration } from "redux/auth/authOperations";
 import * as yup from 'yup';
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import {
   StyledLabel,
   StyledForm,
@@ -33,7 +33,7 @@ export const RegisterForm = () => {
         register,
         handleSubmit,
         formState: { errors },
-        reset,
+        // reset,
       } = useForm({
         defaultValues: {
           name: '',
@@ -44,13 +44,8 @@ export const RegisterForm = () => {
         mode: 'onTouched',
       });
     
-      const registerUser = async data => {
-        try{
-          dispatch(registration(data));
-          reset();
-        } catch(error){
-           toast.error('Sorry, this name is not valid'); 
-        }     
+      const registerUser = data => {
+        dispatch(registration(data));
     }
     
 

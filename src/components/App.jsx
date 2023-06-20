@@ -5,6 +5,7 @@ import { Layout } from './Layout/Layout';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { refreshUser } from 'redux/auth/authOperations';
+import { Loader } from './Loader/loader';
 import { useRefreshUser } from 'hooks';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,7 +26,11 @@ const isRefreshing = useRefreshUser();
 useEffect(() => {
   dispatch(refreshUser());
 }, [dispatch]);
-  return (!isRefreshing && (<>
+
+  return isRefreshing ? (
+    <Loader/>
+  ) : (
+  <>
    <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={
@@ -60,9 +65,5 @@ useEffect(() => {
     </Routes>
   <ToastContainer autoClose={3000}/>
   </>
-     
-  
   )
-);
-}
-
+};

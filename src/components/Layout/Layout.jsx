@@ -26,7 +26,6 @@ export const Layout = () => {
   const themeMode = useTheme();
 
   return (
-//    
 <ThemeProvider theme={theme[themeMode]}>
 <Global styles={GlobalStyles} />
 <Header>

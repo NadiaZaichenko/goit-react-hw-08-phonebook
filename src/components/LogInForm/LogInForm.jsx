@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from "react-redux";
 import { logIn } from "redux/auth/authOperations";
 import * as yup from 'yup';
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import {
   StyledLabel,
   StyledForm,
@@ -34,7 +34,7 @@ export const LogInForm = () => {
         register,
         handleSubmit,
         formState: { errors },
-        reset,
+        // reset,
       } = useForm({
         defaultValues: {
           email: '',
@@ -44,27 +44,10 @@ export const LogInForm = () => {
         mode: 'onTouched',
       });
     
-      const loginUser = async data => {
-        // if(data !== Response){
-        //   toast.error('Sorry, this name is not valid.Try again');
-        // }
-        try{
-          await dispatch(logIn(data));
-          reset(); 
-        } catch(error){
-           toast.error('Sorry, this name is not valid'); 
-        }     
-      };
-
-    //   const registerUser = async data => {
-    //     try{
-    //       dispatch(registration(data));
-    //       reset();
-    //     } catch(error){
-    //        toast.error('Sorry, this name is not valid'); 
-    //     }     
-    // }
-
+      const loginUser = (data) => {
+        dispatch(logIn(data));
+        } 
+        
     return(
         <StyledForm onSubmit={handleSubmit(loginUser)} 
         autoComplete="off"
