@@ -44,13 +44,26 @@ export const LogInForm = () => {
         mode: 'onTouched',
       });
     
-      const loginUser = data => {
-        if(data !== Response.ok){
-           toast.error('Sorry, this name is not valid.Try again'); 
-        }
-        dispatch(logIn(data));
-          reset();
+      const loginUser = async data => {
+        // if(data !== Response){
+        //   toast.error('Sorry, this name is not valid.Try again');
+        // }
+        try{
+          await dispatch(logIn(data));
+          reset(); 
+        } catch(error){
+           toast.error('Sorry, this name is not valid'); 
+        }     
       };
+
+    //   const registerUser = async data => {
+    //     try{
+    //       dispatch(registration(data));
+    //       reset();
+    //     } catch(error){
+    //        toast.error('Sorry, this name is not valid'); 
+    //     }     
+    // }
 
     return(
         <StyledForm onSubmit={handleSubmit(loginUser)} 

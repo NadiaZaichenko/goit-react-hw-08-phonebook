@@ -44,13 +44,14 @@ export const RegisterForm = () => {
         mode: 'onTouched',
       });
     
-      const registerUser = data => {
-        if(data === Response.ok){
+      const registerUser = async data => {
+        try{
           dispatch(registration(data));
           reset();
-        }
-        toast.error('Sorry, this name is not valid'); 
-      };
+        } catch(error){
+           toast.error('Sorry, this name is not valid'); 
+        }     
+    }
     
 
     return(
